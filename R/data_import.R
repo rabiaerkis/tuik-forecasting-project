@@ -1,10 +1,10 @@
-# ==============================================================================
+
 # Project: R-Based Forecasting Project Using TÜİK Data
 # Script: data_import.R
 # Purpose: Dynamically search, fetch, clean, and transform the 
 #          Quarterly Tourism data into a reproducible R time series object.
 # Author: Rabia Erkış
-# ==============================================================================
+
 
 library(tuikr)
 library(httr)
