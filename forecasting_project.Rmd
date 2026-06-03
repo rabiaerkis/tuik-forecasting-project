@@ -1,14 +1,14 @@
 1. Project Title & OverviewThis project presents an automated, end-to-end data science and econometric pipeline developed to forecast tourism demand fluctuations in Turkey. Tourism serves as a paramount pillar for Turkey's economic growth, directly impacting foreign exchange reserves and employment metrics. The primary objective of this quantitative study is to systematically construct, evaluate, and compete ten diverse time-series forecasting models to predict the Total Number of Arriving Citizens (by Purpose of Visit) into Turkey for the second quarter of 2026 (2026 Q2).2. Student InformationName & Surname: Rabia ErkışDepartment: Management Information Systems (English Medium)Institution: Marmara UniversityCourse: Time-Series Forecasting and Business Analytics3. TÜİK Data Source InformationThe empirical foundations of this research rely strictly on official macroeconomic indicators maintained by the Turkish Statistical Institute (TÜİK).Data Set Name: Tourism Statistics / Number of Arriving Citizens and Average Number of OvernightsTheme / Category: Theme 14 - TourismTable Name: Arriving Citizens by Purpose of VisitData Frequency: Quarterly (4 observations per fiscal year)Temporal Horizon: 2012 Q1 to 2026 Q14. Data Access Process through tuikrTo maintain absolute reproducibility and avoid manual spreadsheet errors, data ingestion is executed dynamically using the open-source tuikr package wrapper. The script safely queries the TÜİK API gateway using dedicated structural dataflow catalogs.Kod snippet'i# Daha önce yazdığımız veri çekme scriptini Rmd içerisine entegre ediyoruz
-# Bu sayede ham veri doğrudan TÜİK API portalından çekilir.
+
 source("R/data_import.R")
 
-# Çekilen ham zaman serisinin kontrolü
+
 print(start(tourism_ts))
 print(frequency(tourism_ts))
 5. Use of TÜİK Data in R & Data CleaningMacroeconomic data frequently suffers from structural anomalies and missing values caused by geopolitical events or global disruptions. Programmatic data preparation steps implemented in this project are detailed below:Kod snippet'i# 2020 Q2 dönemindeki pandemiden kaynaklı eksik değerleri (NA) mevsimselliği koruyarak dolduruyoruz
 tourism_ts_clean <- forecast::na.interp(tourism_ts)
 
-# Veriyi Eğitim (Train) ve Test setlerine bölüyoruz (Son 4 çeyrek test için ayrılmıştır)
+
 train_series <- window(tourism_ts_clean, end = c(2025, 1))
 test_actuals <- window(tourism_ts_clean, start = c(2025, 2))
 h_val <- length(test_actuals)
@@ -24,7 +24,7 @@ comparison_matrix <- data.frame(
   Bias = NA, MAD = NA, MSE = NA, MAPE = NA, RSFE = NA, Tracking_Signal = NA, Next_Period_Forecast = NA
 )
 
-# Yardımcı Metrik Hesaplama Fonksiyonu
+
 calculate_metrics_rmd <- function(actual, forecast_values) {
   errors <- actual - forecast_values
   return(list(
