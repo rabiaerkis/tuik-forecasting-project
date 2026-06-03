@@ -1,10 +1,3 @@
-
-# Project: R-Based Forecasting Project Using TÜİK Data
-# Script: forecasting_methods.R
-# Purpose: Apply 10 mandatory forecasting methods and compute all accuracy metrics
-# Author: Rabia Erkış
-
-
 library(forecast)
 library(dplyr)
 
