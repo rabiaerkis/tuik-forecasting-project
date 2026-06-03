@@ -345,6 +345,6 @@ tuik-forecasting-project/
 
 Student Name: Rabia Erkış
 
-Student Number: YOUR_STUDENT_NUMBER_HERE
+Student Number: 138723017
 
-Course: Time-Series Forecasting and Business Analytics (MIS-422)
+
