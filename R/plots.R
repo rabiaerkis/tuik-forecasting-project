@@ -1,12 +1,4 @@
-
-# Project: R-Based Forecasting Project Using TÜİK Data
-# Script: plots.R
-# Purpose: Generate and save exploratory and final forecast plots under outputs/figures/
-# Author: Rabia Erkış
-
-
 library(forecast)
-
 
 tourism_ts_clean <- forecast::na.interp(tourism_ts)
 fig_dir <- "outputs/figures/"
